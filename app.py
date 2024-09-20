@@ -1,7 +1,10 @@
+import os
+import markdown
 from flask import Flask, jsonify, render_template
 import requests
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -12,7 +15,28 @@ def about():
 
 @app.route('/blog')
 def blog():
-    return render_template('blog.html')
+    blog_directory = 'blog_entries'
+    blog_posts = []
+
+    if os.path.exists(blog_directory):
+        for filename in os.listdir(blog_directory):
+            if filename.endswith(".md"):
+                filepath = os.path.join(blog_directory, filename)
+                with open(filepath, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    html_content = markdown.markdown(content)
+
+                    # Extraemos la fecha y el título del archivo
+                    post_title = filename.split('-')[3].replace('_', ' ').replace('.md', '')
+                    post_date = '-'.join(filename.split('-')[:3])
+
+                    blog_posts.append({
+                        "title": post_title,
+                        "date": post_date,
+                        "content": html_content
+                    })
+
+    return render_template('blog.html', blog_posts=blog_posts)
 
 @app.route('/stats')
 def stats():
@@ -41,7 +65,7 @@ def get_match_details(matches_data):
     for match in matches_data:
         match_id = match['match_id']
         competition_name = match['competition']['competition_name']
-        season= match['season']['season_name']
+        season = match['season']['season_name']
         home_team = match['home_team']['home_team_name']
         away_team = match['away_team']['away_team_name']
         home_score = match['home_score']
