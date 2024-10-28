@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Stats - European Leagues</title>
+
+    <!-- Enlace a CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='images/soccer_logo.png') }}" alt="Soccer Stats Logo" class="navbar-logo">
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About Me</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <h2>European Leagues</h2>
+            <ul>
+                <li>
+                    <a href="/league/39">
+                        <img src="{{ url_for('static', filename='images/premier_league_logo.png') }}" alt="Premier League"> Premier League
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/140">
+                        <img src="{{ url_for('static', filename='images/laliga_logo.png') }}" alt="LaLiga"> LaLiga
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/78">
+                        <img src="{{ url_for('static', filename='images/bundesliga_logo.png') }}" alt="Bundesliga"> Bundesliga
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/135">
+                        <img src="{{ url_for('static', filename='images/serie_a_logo.png') }}" alt="Serie A"> Serie A
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/61">
+                        <img src="{{ url_for('static', filename='images/ligue1_logo.png') }}" alt="Ligue 1"> Ligue 1
+                    </a>
+                </li>
+            </ul>
+    
+            <h2>European Cups</h2>
+            <ul>
+                <li>
+                    <a href="/league/2">
+                        <img src="{{ url_for('static', filename='images/uefa_champions_league_logo.png') }}" alt="Champions League"> Champions League
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/3">
+                        <img src="{{ url_for('static', filename='images/uefa_europa_league_logo.png') }}" alt="Europa League"> Europa League
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/848">
+                        <img src="{{ url_for('static', filename='images/uefa_conference_league.png') }}" alt="Conference League"> Conference League
+                    </a>
+                </li>
+            </ul>
+    
+            <h2>South America Leagues</h2>
+            <ul>
+                <li>
+                    <a href="/league/71">
+                        <img src="{{ url_for('static', filename='images/brasileirao_logo.png') }}" alt="Brasileirao"> Brasileirao
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/128">
+                        <img src="{{ url_for('static', filename='images/argentina_first_division.png') }}" alt="Argentina First Division"> Argentina First Division
+                    </a>
+                </li>
+                <li>
+                    <a href="/league/218">
+                        <img src="{{ url_for('static', filename='images/liga_pro_ecuador.png') }}" alt="LigaPro"> LigaPro
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    
+        <main class="main-content">
+            <h2>Live Matches</h2>
+            <div id="matches-container">
+                {% if live_matches %}
+                    <ul>
+                    {% for match in live_matches %}
+                        <li>
+                            <p><strong>{{ match['teams']['home']['name'] }}</strong> vs <strong>{{ match['teams']['away']['name'] }}</strong></p>
+                            <p>Score: {{ match['goals']['home'] }} - {{ match['goals']['away'] }}</p>
+                            <p>Status: {{ match['fixture']['status']['short'] }}</p>
+                            <p>Predicción: {{ match['prediction'] }}</p> <!-- Mostrar la predicción del modelo -->
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No live matches available at the moment.</p>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
