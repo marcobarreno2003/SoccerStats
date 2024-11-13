@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,7 +112,7 @@
                             <p><strong>{{ match['teams']['home']['name'] }}</strong> vs <strong>{{ match['teams']['away']['name'] }}</strong></p>
                             <p>Score: {{ match['goals']['home'] }} - {{ match['goals']['away'] }}</p>
                             <p>Status: {{ match['fixture']['status']['short'] }}</p>
-                            <p>Predicción: {{ match['prediction'] }}</p> <!-- Mostrar la predicción del modelo -->
+                            <p>Prediction: {{ match['prediction'] }}</p> 
                         </li>
                     {% endfor %}
                     </ul>

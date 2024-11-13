@@ -1,3 +1,4 @@
+
 import os
 import sys
 import numpy as np
@@ -8,21 +9,21 @@ import joblib
 from flask import Flask, json, render_template
 from tensorflow.keras.models import load_model
 
-# Configuración de Flask
+# Flask Config
 app = Flask(__name__, template_folder='../frontend', static_folder='../frontend/assets')
 
-# Configura el path para importar módulos desde la carpeta 'api'
+# Flask API conection
 sys.path.append(os.path.join(os.path.dirname(__file__), 'api'))
 
-# Importa la función de preprocesamiento desde data.py
+# Impt pre process data
 from api.data import preprocess_for_prediction
 
-# Cargar el modelo entrenado, el scaler y el column transformer
+# Load the trained model
 model_path = os.path.join(os.path.dirname(__file__), 'api', 'soccer_model.keras')
 scaler_path = os.path.join(os.path.dirname(__file__), 'api', 'scaler.save')
 column_transformer_path = os.path.join(os.path.dirname(__file__), 'api', 'column_transformer.save')
 
-# Cargar modelo y transformadores pre-entrenados
+# Pre-trained model
 model = load_model(model_path)
 scaler = joblib.load(scaler_path)
 column_transformer = joblib.load(column_transformer_path)
