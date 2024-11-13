@@ -21,19 +21,30 @@
 
 ```
 SoccerStats/
-├── README.md                   # Project description and usage guide
-├── requirements.txt            # List of dependencies
-├── data/                       # Training data and sample live data
-├── src/                        # Source code for processing and prediction
-│   ├── data_processing.py      # Data preprocessing and handling
-│   ├── model_training.py       # Model training and evaluation
-│   ├── prediction.py           # Real-time match outcome prediction
-│   └── api_integration.py      # Integration with API-Sports for live data
-├── app/                        # Flask web interface
-│   ├── templates/              # HTML templates
-│   └── static/                 # Static files like CSS or JavaScript
-├── tests/                      # Unit and integration tests
-└── docs/                       # Additional documentation and reports
+├── backend/                     # Backend folder containing API and Flask server
+│   ├── api/                     # API endpoints for data processing
+│   ├── templates/               # HTML templates for the web interface
+│   ├── .env                     # Environment variables for sensitive configurations
+│   └── app.py                   # Main Flask application
+├── frontend/                    # Frontend folder with assets and HTML pages
+│   ├── assets/                  # Static assets for the frontend
+│   │   ├── css/                 # CSS files for styling
+│   │   │   └── style.css        # Main stylesheet
+│   │   └── images/              # League and team logos
+│   │       ├── argentina_first_division.png
+│   │       ├── brasileirao_logo.png
+│   │       ├── [other league logos...]
+│   ├── js/                      # JavaScript files
+│   │   └── app.js               # Main JavaScript file
+│   ├── about.html               # About page
+│   ├── blog.html                # Blog page
+│   ├── index.html               # Main landing page
+│   ├── live_matches.html        # Page for live match tracking
+│   └── predict.html             # Prediction page
+├── .gitignore                   # Git ignore file to exclude certain files/folders
+├── README.md                    # Project description and usage guide
+└── requirements.txt             # List of dependencies
+
 ```
 
 ## How to Use
