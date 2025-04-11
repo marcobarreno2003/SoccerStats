@@ -51,7 +51,7 @@ SoccerStats/
 
 1. **Clone the Repository**: Clone the project to your local machine.
    ```bash
-   git clone https://github.com/yourusername/SoccerStats.git
+   git clone https://github.com/marcobarreno2003/SoccerStats.git
    ```
 
 2. **Install Dependencies**: Ensure you have Python installed, then use `pip` to install the required packages.
