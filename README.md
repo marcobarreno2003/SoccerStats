@@ -1,6 +1,4 @@
-¡Entendido! 🔥 Te paso un **README sencillo, limpio y listo para copiar y pegar**. Con secciones claras, sin cosas de más y con formato que se ve bien en GitHub:
 
-```markdown
 # ⚽ SoccerStats
 
 A web application that uses **Machine Learning** to predict soccer match outcomes in real time.  
